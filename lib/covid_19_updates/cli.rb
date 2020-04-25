@@ -34,7 +34,7 @@ module Covid19Updates
     class Headlines
   
       attr_accessor :name, :url
-      extend HeadlinePick
+      #extend HeadlinePick
     
       @headlines []
     

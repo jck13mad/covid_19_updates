@@ -1,6 +1,7 @@
-require "covid_19_updates/version"
-require "covid_19_updates/cli"
+# frozen_string_literal: true
 
+require 'covid_19_updates/version'
+require 'covid_19_updates/cli'
 
 module Covid19Updates
   # class CLI < Thor
@@ -9,8 +10,4 @@ module Covid19Updates
   #     puts "Hello #{name}"
   #   end
   # end
-
-
 end
-
-

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'thor'
+require 'nokogiri'
 
 module Covid19Updates
   class CLI < Thor

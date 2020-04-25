@@ -18,6 +18,11 @@ module Covid19Updates
       list_new_networks
     end
 
+    desc 'get_headlines NUM', 'Outputs list of heads from news network'
+    def get_headlines(number)
+      puts "Headlines from "CNBC"
+    end
+
     private
 
     def call
@@ -31,7 +36,7 @@ module Covid19Updates
         3. CNN
         4. STATNEWS
 
-      Enter the number of news website you would like to see updates from.\n Please type list to see options or exit to leave.
+      Enter the number of news website you would like to see updates from.\n Please type cov list to see options or exit to leave.
       DOC
 
       puts greeting

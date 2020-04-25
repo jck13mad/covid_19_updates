@@ -3,6 +3,11 @@ require "thor"
 
 module Covid19Updates
   class CLI < Thor
+    def self.exit_on_failure
+      true
+    end
+
+    
     desc 'start', 'Prints out greeting and basic commands"'
     start
 

@@ -2,6 +2,12 @@ require "covid_19_updates/version"
 require "covid_19_updates/cli"
 
 module Covid19Updates
-  class Error < StandardError; end
-  # Your code goes here...
+  class CLI < Thor
+    desc "greet NAME", "say hello to NAME"
+    def greet(name)
+      puts "Hello #{name}"
+    end
+  end
 end
+
+

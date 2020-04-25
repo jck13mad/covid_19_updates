@@ -8,8 +8,13 @@ module Covid19Updates
     end
 
 
-    desc 'start', 'Prints out greeting and basic commands"'
+    desc 'start', 'Prints out greeting and basic commands'
     def start
+      call
+    end
+
+    desc 'start', 'Prints out greeting and basic commands'
+    def list 
       call
     end
 
@@ -24,7 +29,9 @@ module Covid19Updates
         1. CNBC
         2. FOXNEWS
         3. CNN
-        4. APPLE
+        4. STATNEWS
+
+      Enter the number of news website you would like to see updates from.\n Please type list to see options or exit to leave.
       DOC
 
       puts greeting

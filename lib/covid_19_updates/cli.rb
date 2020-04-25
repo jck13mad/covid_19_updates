@@ -54,55 +54,12 @@ module Covid19Updates
         end
 
       end
+    end
+  
     
-      ##FOX 
     
-      def self.scrape_fox
-        main_url = "https://www.foxnews.com/"
-        doc = Nokogiri::HTML(open("https://www.foxnews.com/category/health/infectious-disease/coronavirus"))
-        puts doc.css("div.page-heading").css("h1").text.blue.bold
     
-        i = 0
-        while i < 5
-          fox_updates_headline = self.new
-          fox_updates_headline.name = doc.search("div.content article-list article header")[i].text
-          fox_updates_headline.url = main_url + doc.search("div.content article-list article header").attributes["href"].value
-          @headlines << fox_updates_headline
-          i += 1
-        end
-      end
-    
-      ##CNN
-      def self.scrape_cnn
-        main_url = "https://www.cnn.com/"
-        doc = Nokogiri::HTML(open("https://www.cnn.com/us/live-news/us-coronavirus-update-04-24-20/index.html"))
-        puts "Coronavirus Updates".blue.bold
-    
-        i = 0
-        while i < 5
-          cnn_updates_headline = self.new
-          cnn_updates_headline.name = doc.search("div.ls _30cc0dc7 _0fe074fa article header span h2")[i].text
-          cnn_updates_headline.url = main_url + doc.search("div.ls _30cc0dc7 _0fe074fa article header span h2").attributes["href"].value
-          @headlines << cnn_updates_headline
-          i += 1
-        end
-      end
-    
-      ##STAT
-      def self.scrape_stat
-        main_url = "https://www.statnews.com/"
-        doc = Nokogiri::HTML(open("https://www.statnews.com/tag/coronavirus/"))
-        puts doc.css("div.content-header-inner").css("h1").text.blue.bold
-    
-        i = 0
-        while i < 5
-          stat_updates_headline = self.new
-          stat_updates_headline.name = doc.search("div.article-info h3 a")[i].text
-          stat_updates_headline.url = main_url + doc.search("div.article-info h3 a").attributes["href"].value
-          @headlines << stat_updates_headline
-          i += 1
-        end
-      end
+
 
     private
 

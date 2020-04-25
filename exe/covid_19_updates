@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'covid_19_updates'
+
+Covid19Updates::CLI.start

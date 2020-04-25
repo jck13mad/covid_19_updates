@@ -48,7 +48,7 @@ module Covid19Updates
         while i < 3
           cnbc_updates_headline = self.new
           cnbc_updates_headline.name = doc.search("div.Card-titleContainer")[i].text
-          cnbc_updates_headline.url = main_url + doc.search("div.Card-titleContainer a").attributes["href"].value
+          cnbc_updates_headline.url = main_url + doc.search("div.Card-titleContainer a").attribute["href"].value
           @headlines << cnbc_updates_headline
           i += 1
         end

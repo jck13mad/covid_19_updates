@@ -17,7 +17,9 @@ module Covid19Updates
     def list 
       list_new_networks
 
-      news_net = gets.chomp
+      news_net = ask("Enter number assigned to news network")
+
+      
 
       case news_net
       when "1"

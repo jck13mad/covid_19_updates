@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     covid_19_updates (0.1.0)
-      thor (~> 1.0, >= 1.0.1)
+      thor (>= 1.0.1)
 
 GEM
   remote: https://rubygems.org/

@@ -1,5 +1,6 @@
 require "covid_19_updates/version"
 require "covid_19_updates/cli"
+require "thor"
 
 module Covid19Updates
   class CLI < Thor

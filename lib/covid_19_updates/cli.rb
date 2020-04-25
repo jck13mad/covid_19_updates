@@ -3,6 +3,7 @@
 require 'thor'
 require 'nokogiri'
 require 'open-uri'
+require 'colorize'
 
 module Covid19Updates
   class CLI < Thor

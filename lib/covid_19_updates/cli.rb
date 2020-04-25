@@ -16,12 +16,22 @@ module Covid19Updates
     desc 'start', 'Prints out greeting and basic commands'
     def list 
       list_new_networks
+
+      news_net = gets.chomp
+
+      case news_net
+      when "1"
+        puts "News from CNBC"
+      else
+        puts "No news"
+      end
     end
 
-    desc 'get_headlines NUM', 'Outputs list of heads from news network'
-    def get_headlines(number)
-      puts "Headlines from "CNBC"
-    end
+    # desc 'headlines NUM', 'Outputs list of heads from news network'
+    # def headlines(number)
+    #   puts "Headlines from "CNBC"
+    # end
+
 
     private
 

@@ -8,6 +8,9 @@ module Covid19Updates
       puts "Hello #{name}"
     end
   end
+
+  class Testing
+  end
 end
 
 

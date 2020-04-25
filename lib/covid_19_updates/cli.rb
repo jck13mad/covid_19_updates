@@ -7,13 +7,15 @@ module Covid19Updates
       true
     end
 
-    
+
     desc 'start', 'Prints out greeting and basic commands"'
-    start
+    def start
+      call
+    end
 
     private
 
-    def start
+    def call
       greeting = <<~DOC
     
       Welcome to Covid-19 Updates!

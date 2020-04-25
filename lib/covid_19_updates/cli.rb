@@ -36,7 +36,7 @@ module Covid19Updates
       attr_accessor :name, :url
       #extend HeadlinePick
     
-      @headlines []
+      @headlines = []
     
       ##CNBC
       def self.scrape_cnbc

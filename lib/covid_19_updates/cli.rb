@@ -94,29 +94,47 @@ module Covid19Updates
       puts
     end
 
-    def cnn_headline
-      doc = Nokogiri::HTML(URI.open('https://www.cnn.com/world/live-news/coronavirus-pandemic-04-26-20-intl/index.html'))
-      items = doc.css('h2.post-headlinestyles_Headline-sc-2ts3cz-1 gzgZOi').text
+    # def cnn_headline
+    #   doc = Nokogiri::HTML(URI.open('https://www.cnn.com/world/live-news/coronavirus-pandemic-04-26-20-intl/index.html'))
+    #   items = doc.css('h2.post-headlinestyles_Headline-sc-2ts3cz-1 gzgZOi').text
       
+    #   array = []
+    #   # items.each do |item|
+    #   #   array << { title: item }
+    #   # end
+    #   array << items
+
+    #   array.each_with_index do |news, index|
+    #     puts "#{index.succ}: #{news[:title]}"
+    #   end
+
+    #   puts
+    #     pick = ask('Please pick a number to view an update: ')
+    #   puts 
+
+    # end
+
+    def stat_headline
+      doc = Nokogiri::HTML(URI.open('https://www.statnews.com/'))
+      items = doc.css('span.article-list-title').text
+
       array = []
-      # items.each do |item|
-      #   array << { title: item }
-      # end
-      array << items
+      items.each do |item|
+        array << { title: item.text, link: item.children.attribute('href').value }
+      end
 
       array.each_with_index do |news, index|
         puts "#{index.succ}: #{news[:title]}"
       end
 
       puts
-        pick = ask('Please pick a number to view an update: ')
-      puts 
+      pick = ask('Please pick a number to view an update: ')
+      puts
 
+      print Nokogiri::HTML(URI.open((array[pick.to_i - 1][:link]).to_s)).css('a.article-list-link').text
+      puts
     end
 
-    # def stat_headline
-    #   doc = Nokogiri::HTML(URI.open('https://www.statnews.com/'))
-    #   items = doc.css('span.article-list-title')
 
 
     def call

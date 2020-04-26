@@ -85,7 +85,7 @@ module Covid19Updates
       # n.css('p')[rand(3..(n.css('p').count))].text (n.css('p').count)
       n = final[pick.to_i - 1][:link].to_s
 
-      print Nokogiri::HTML(URI.open(n).css('p')[rand(3..10)].text
+      print Nokogiri::HTML(URI.open(n)).css('p')[rand(3..10)].text
       puts
     end
 

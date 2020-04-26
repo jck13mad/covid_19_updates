@@ -97,33 +97,33 @@ module Covid19Updates
       puts
     end
 
-    def cnn_headline
-      doc = Nokogiri::HTML(URI.open('https://www.cnn.com/world/live-news/coronavirus-pandemic-04-26-20-intl/index.html'))
-      items = doc.css('h2.post-headlinestyles_Headline-sc-2ts3cz-1 gzgZOi').text
+    # def cnn_headline
+    #   doc = Nokogiri::HTML(URI.open('https://www.cnn.com/world/live-news/coronavirus-pandemic-04-26-20-intl/index.html'))
+    #   items = doc.css('h2.post-headlinestyles__Headline-sc-2ts3cz-1 gzgZOi').text
 
 
-      binding.irb
+    #   binding.irb
       
-      array = []
-      items.each do |item|
-        array << { title: item }
-      end
+    #   array = []
+    #   items.each do |item|
+    #     array << { title: item }
+    #   end
 
-      array.each_with_index do |news, index|
-        puts "#{index.succ}: #{news[:title]}"
-      end
+    #   array.each_with_index do |news, index|
+    #     puts "#{index.succ}: #{news[:title]}"
+    #   end
 
-      puts
-        pick = ask('Please pick a number to view an update: ')
-      puts 
+    #   puts
+    #     pick = ask('Please pick a number to view an update: ')
+    #   puts 
 
-    end
+    # end
 
     def stat_headline
       doc = Nokogiri::HTML(URI.open('https://www.statnews.com/'))
       items = doc.css('span.article-list-title').text
 
-      
+      binding.pry
 
       array = []
       items.each do |item|

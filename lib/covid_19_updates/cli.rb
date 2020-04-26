@@ -28,9 +28,10 @@ module Covid19Updates
       when '2'
         fox_headline
       when '3'
-        cnn_headline
+        stat_headline
       else
         puts 'No news source by that number.'
+        puts ""
         puts ""
         start
       end

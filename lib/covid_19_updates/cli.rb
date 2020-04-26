@@ -123,8 +123,8 @@ module Covid19Updates
       doc = Nokogiri::HTML(URI.open('https://www.statnews.com/'))
       items = doc.css('span.article-list-title').text
 
-      binding.pry
-
+      binding.irb
+      
       array = []
       items.each do |item|
         array << { title: item.text, link: item.children.attribute('href').value }

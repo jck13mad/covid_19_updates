@@ -101,7 +101,7 @@ module Covid19Updates
         array << { title: item.text }
       end
 
-      rray.each_with_index do |news, index|
+      array.each_with_index do |news, index|
         puts "#{index.succ}: #{news[:title]}"
       end
 

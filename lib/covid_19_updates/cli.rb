@@ -30,7 +30,9 @@ module Covid19Updates
       when '3'
         cnn_headline
       else
-        puts 'No news'
+        puts 'No news source by that number.'
+        puts ""
+        start
       end
     end
 
@@ -51,7 +53,7 @@ module Covid19Updates
       end
 
       puts
-      pick = ask('Please pick a number to view an update: ')
+      pick = ask('Please pick a number to view an update: ').red
       puts
 
       print Nokogiri::HTML(URI.open((array[pick.to_i - 1][:link]).to_s)).css('div.group').text.gsub('Â', '')
@@ -80,7 +82,7 @@ module Covid19Updates
       end
 
       puts
-        pick = ask('Please pick a number to view an update: ')
+        pick = ask('Please pick a number to view an update: ').red
       puts
 
 
@@ -106,7 +108,7 @@ module Covid19Updates
       end
 
       puts
-        pick = ask('Please pick a number to view an update: ')
+        pick = ask('Please pick a number to view an update: ').red
       puts 
 
       
@@ -131,11 +133,14 @@ module Covid19Updates
         Enter the number of news website you would like to see updates from.\n Please type cov list to see options or exit to leave.
       DOC
 
-      puts greeting
+      puts greeting.green.bold
     end
 
     def list_new_networks
       greeting = <<~DOC
+      Welcome to Covid-19 Updates!
+      View the top headlines from the following sites:
+
           1. CNBC
           2. FOX NEWS
           3. CNN
@@ -143,7 +148,7 @@ module Covid19Updates
 
         Enter the number of news website you would like to see updates from.\n Please type list to see options or exit to leave.
       DOC
-      puts greeting
+      puts greeting.cyan.bold
     end
   end
 end

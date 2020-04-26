@@ -24,75 +24,82 @@ module Covid19Updates
 
       case news_net
       when '1'
-        h = Headlines.scrape_cnbc
-        binding.irb
+        cnbc_headline
+      when '2'
+        fox_headline
       else
         puts 'No news'
       end
     end
 
-    class Headlines
-  
-      attr_accessor :name, :url
-      #extend HeadlinePick
-    
-      @headlines = []
-    
-      ##CNBC
-      def self.scrape_cnbc
-        main_url = "https://www.cnbc.com/"
-        doc = Nokogiri::HTML(open("https://www.cnbc.com/coronavirus/"))
-        puts doc.css("div.PageHeaderWithTuneInText").css("a").text.blue.bold
-    
-        i = 0
-        while i < 3
-          cnbc_updates_headline = self.new
-          cnbc_updates_headline.name = doc.search("div.Card-titleContainer")[i].text
-          cnbc_updates_headline.url = main_url + doc.search("div.Card-titleContainer a").attribute["href"].value
-          @headlines << cnbc_updates_headline
-          i += 1
-        end
-
-      end
-    end
-  
-    
-    
-    
-
-
     private
 
-    # def cnbc_headline
-    #   @headlines = Array.new
-    #   main_url = 'https://www.cnbc.com/'
-    #   doc = Nokogiri::HTML(open('https://www.cnbc.com/coronavirus/'))
-    #   puts doc.css('div.PageHeaderWithTuneInText').css('a').text.blue.bold
+    def cnbc_headline
+      doc = Nokogiri::HTML(URI.open('https://www.cnbc.com/coronavirus/'))
 
-    #   i = 0
-    #   while i < 3
-    #     cnbc_updates_headline = new
-    #     cnbc_updates_headline.name = doc.search('div.Card-titleContainer')[i].text
-    #     cnbc_updates_headline.url = main_url + doc.search('div.Card-titleContainer a').attributes['href'].value
-    #     @headlines << cnbc_updates_headline
-    #     i += 1
-    #   end
+      items = doc.css('div.Card-titleContainer')
 
-    #   puts @headlines
-    # end
+      array = []
+      items.each do |item|
+        array << { title: item.text, link: item.children.attribute('href').value }
+      end
+
+      array.each_with_index do |news, index|
+        puts "#{index.succ}: #{news[:title]}"
+      end
+
+      puts
+      pick = ask('Pick a news item')
+      puts
+
+      print Nokogiri::HTML(URI.open((array[pick.to_i - 1][:link]).to_s)).css('div.group').text.gsub('Â', '')
+      puts
+    end
+
+    def fox_headline
+      doc = Nokogiri::HTML(URI.open('https://www.foxnews.com/category/health/infectious-disease/coronavirus'))
+      items = doc.css('header.info-header')
+
+      array = []
+      items.each do |item|
+        if item.at_css('h4.title a')&.text != nil
+          array << { title: item.at_css('h4.title a')&.text, link: item.at_css('h4.title a')&.attribute('href')&.value }
+        end
+      end
+
+      final = array.map! do |item|
+        item unless item[:link].start_with?('https')
+      end.compact.each do |item|
+        item[:link] = item[:link].prepend('https://foxnews.com')
+      end
+
+      final.each_with_index do |news, index|
+        puts "#{index.succ}: #{news[:title]}"
+      end
+
+      puts
+        pick = ask('Pick a news item')
+      puts
+
+
+      # n.css('p')[rand(3..(n.css('p').count))].text (n.css('p').count)
+      n = final[pick.to_i - 1][:link].to_s
+
+      print Nokogiri::HTML(URI.open(n).css('p')[rand(3..10)].text
+      puts
+    end
 
     def call
       greeting = <<~DOC
-    
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              Welcome to Covid-19 Updates!
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              View the top headlines from the following sites: 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                1. CNBC
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                2. FOXNEWS
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                3. CNN
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                4. STATNEWS
+        Welcome to Covid-19 Updates!
+        View the top headlines from the following sites:
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              Enter the number of news website you would like to see updates from.\n Please type cov list to see options or exit to leave.
+          1. CNBC
+          2. FOXNEWS
+          3. CNN
+          4. STATNEWS
+
+        Enter the number of news website you would like to see updates from.\n Please type cov list to see options or exit to leave.
       DOC
 
       puts greeting

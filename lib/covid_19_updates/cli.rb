@@ -99,9 +99,10 @@ module Covid19Updates
       items = doc.css('h2.post-headlinestyles_Headline-sc-2ts3cz-1 gzgZOi').text
       
       array = []
-      items.each do |item|
-        array << { title: item }
-      end
+      # items.each do |item|
+      #   array << { title: item }
+      # end
+      array << items
 
       array.each_with_index do |news, index|
         puts "#{index.succ}: #{news[:title]}"

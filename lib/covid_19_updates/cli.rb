@@ -94,7 +94,7 @@ module Covid19Updates
 
     def cnn_headline
       doc = Nokogiri::HTML(URI.open('https://www.cnn.com/world/live-news/coronavirus-pandemic-04-26-20-intl/index.html'))
-      items = doc.css('h2.post-headlinestyles_Headline-sc-2ts3cz-1 gzgZ0i')
+      items = doc.css('h2.post-headlinestyles_Headline-sc-2ts3cz-1 gzgZOi')
       
       array = []
       items.each do |item|

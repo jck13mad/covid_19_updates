@@ -53,7 +53,7 @@ module Covid19Updates
       end
 
       puts
-      pick = ask('Please pick a number to view an update: ').red
+      pick = ask('Please pick a number to view an update: '.red)
       puts
 
       print Nokogiri::HTML(URI.open((array[pick.to_i - 1][:link]).to_s)).css('div.group').text.gsub('Â', '')
@@ -82,7 +82,7 @@ module Covid19Updates
       end
 
       puts
-        pick = ask('Please pick a number to view an update: ').red
+        pick = ask('Please pick a number to view an update: '.red)
       puts
 
 
@@ -108,7 +108,7 @@ module Covid19Updates
       end
 
       puts
-        pick = ask('Please pick a number to view an update: ').red
+        pick = ask('Please pick a number to view an update: '.red)
       puts 
 
       

@@ -159,7 +159,9 @@ module Covid19Updates
         call
 
       puts greeting.green.bold
+      end
     end
+    
 
     def list_new_networks
       greeting = <<~DOC

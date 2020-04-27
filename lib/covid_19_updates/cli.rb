@@ -57,7 +57,7 @@ module Covid19Updates
       pick = ask('Please pick a number to view an update: ')
       puts
 
-      print Nokogiri::HTML(URI.open((array[pick.to_i - 1][:link]).to_s)).css('div.group').text.gsub('Â', '')
+      print Nokogiri::HTML(URI.open((array[pick.to_i - 1][:link]).to_s)).css('div.group').text.gsub('Â', '').light_blue
       puts
 
      continue
@@ -93,21 +93,21 @@ module Covid19Updates
       n = final[pick.to_i - 1][:link].to_s
       node = Nokogiri::HTML(URI.open(n)).css('p')
 
-      print node[rand(3..(node.count-4))].text.green
+      print node[rand(3..(node.count-4))].text.light_blue
       puts
 
-      # continue
+     continue
     end
 
     def stat_headline
-      doc = Nokogiri::HTML(URI.open('https://www.statnews.com/'))
-      items = doc.css('span.article-list-title').text
+      doc = Nokogiri::HTML(URI.open('https://www.statnews.com/tag/coronavirus/'))
+      items = doc.css('a.post-title-link').text
 
       binding.irb
 
       array = []
       items.each do |item|
-        array << { title: item.text, link: item.children.attribute('href').value }
+        array << { title: item.text, link: item.attribute('href').value }
       end
 
       array.each_with_index do |news, index|
@@ -118,10 +118,10 @@ module Covid19Updates
       pick = ask('Please pick a number to view an update: ')
       puts
 
-      print Nokogiri::HTML(URI.open((array[pick.to_i - 1][:link]).to_s)).css('a.article-list-link').text
+      print Nokogiri::HTML(URI.open((array[pick.to_i - 1][:link]).to_s)).css('a.post-title-link').text
       puts
 
-      # continue
+      continue
     end
 
     def continue

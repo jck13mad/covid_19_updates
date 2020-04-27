@@ -132,7 +132,7 @@ module Covid19Updates
       if message == "y"
         call
       else
-        puts "Thank you and be safe out there!"
+        puts "Thank you and be safe out there!".light_blue
       end
     end
 

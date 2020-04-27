@@ -36,7 +36,7 @@ module Covid19Updates
         call
       end
     end
-s
+
     private
 
     def cnbc_headline

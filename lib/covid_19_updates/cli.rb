@@ -121,11 +121,13 @@ module Covid19Updates
     end
 
     def continue
+      puts ""
+      puts ""
       message = "Would you like to continue reading updates? (y/n)"
       prints message 
 
       user_input = gets.chomp
-      if user_input == y 
+      if user_input == "y"
         call
       else
         puts "Thank you and be safe out there!"
@@ -138,8 +140,7 @@ module Covid19Updates
 
           1. CNBC
           2. FOX NEWS
-          3. CNN
-          4. STAT NEWS
+          3. STAT NEWS
 
         Enter the number of news website you would like to see updates from.\n Please type cov list to see options or exit to leave.
       DOC
@@ -161,7 +162,7 @@ module Covid19Updates
       puts greeting.green.bold
       end
     end
-    
+
 
     def list_new_networks
       greeting = <<~DOC
@@ -170,8 +171,7 @@ module Covid19Updates
 
           1. CNBC
           2. FOX NEWS
-          3. CNN
-          4. STAT NEWS
+          3. STAT NEWS
 
         Enter the number of news website you would like to see updates from.\n Please type list to see options or exit to leave.
       DOC

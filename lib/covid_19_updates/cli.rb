@@ -30,7 +30,7 @@ module Covid19Updates
       when '3'
         stat_headline
       else
-        puts 'No news source by that number.'
+        puts 'No news source by that number.'.red.bold
         puts ""
         puts ""
         call
@@ -143,6 +143,20 @@ module Covid19Updates
 
         Enter the number of news website you would like to see updates from.\n Please type cov list to see options or exit to leave.
       DOC
+      news_net = ask('Enter number assigned to news network')
+
+      case news_net
+      when '1'
+        cnbc_headline
+      when '2'
+        fox_headline
+      when '3'
+        stat_headline
+      else
+        puts 'No news source by that number.'.red.bold
+        puts ""
+        puts ""
+        call
 
       puts greeting.green.bold
     end

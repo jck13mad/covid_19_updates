@@ -127,7 +127,7 @@ module Covid19Updates
     def continue
       puts ""
       puts ""
-      message = ask('Would you like to continue reading updates? (y/n)'') 
+      message = ask('Would you like to continue reading updates? (y/n)') 
 
       if message == "y"
         call

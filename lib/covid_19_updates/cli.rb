@@ -60,7 +60,7 @@ module Covid19Updates
       print Nokogiri::HTML(URI.open((array[pick.to_i - 1][:link]).to_s)).css('div.group').text.gsub('Â', '')
       puts
 
-      # continue
+     continue
     end
 
     def fox_headline
@@ -124,17 +124,17 @@ module Covid19Updates
       # continue
     end
 
-    # def continue
-    #   puts ""
-    #   puts ""
-    #   message = ask('Would you like to continue reading updates? (y/n)'') 
+    def continue
+      puts ""
+      puts ""
+      message = ask('Would you like to continue reading updates? (y/n)'') 
 
-    #   if message == "y"
-    #     call
-    #   else
-    #     puts "Thank you and be safe out there!"
-    #   end
-    # end
+      if message == "y"
+        call
+      else
+        puts "Thank you and be safe out there!"
+      end
+    end
 
 
     def call

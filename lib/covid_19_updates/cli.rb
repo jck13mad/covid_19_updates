@@ -145,7 +145,8 @@ module Covid19Updates
           3. STAT NEWS
 
         Enter the number of news website you would like to see updates from.\n Please type cov list to see options or exit to leave.
-      DOC
+        DOC
+      puts greeting.green.bold
       news_net = ask('Enter number assigned to news network')
 
       case news_net
@@ -160,8 +161,6 @@ module Covid19Updates
         puts ""
         puts ""
         call
-
-      puts greeting.green.bold
       end
     end
 

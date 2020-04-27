@@ -128,7 +128,7 @@ module Covid19Updates
       puts ""
       puts ""
       message = "Would you like to continue reading updates? (y/n)"
-      prints message 
+      print message 
 
       user_input = gets.chomp
       if user_input == "y"

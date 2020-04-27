@@ -118,7 +118,7 @@ module Covid19Updates
       pick = ask('Please pick a number to view an update: ')
       puts
 
-      print Nokogiri::HTML(URI.open((array[pick.to_i - 1][:link]).to_s)).css('a.post-title-link').text
+      print Nokogiri::HTML(URI.open((array[pick.to_i - 1][:link]).to_s)).css('a.post-title-link').text.light_blue
       puts
 
       continue

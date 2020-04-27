@@ -101,9 +101,9 @@ module Covid19Updates
 
     def stat_headline
       doc = Nokogiri::HTML(URI.open('https://www.statnews.com/tag/coronavirus/'))
-      items = doc.css('a.post-title-link').text
+      items = doc.css('a.post-title-link')
 
-      binding.irb
+      # binding.irb
 
       array = []
       items.each do |item|

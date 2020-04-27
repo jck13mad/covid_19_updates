@@ -13,7 +13,7 @@ module Covid19Updates
 
     desc 'start', 'Prints out greeting and basic commands'
     def start
-      call
+      list 
     end
 
     desc 'start', 'Prints out greeting and basic commands'
@@ -28,8 +28,6 @@ module Covid19Updates
       when '2'
         fox_headline
       when '3'
-        cnn_headline
-      when '4'
         stat_headline
       else
         puts 'No news source by that number.'
@@ -38,7 +36,7 @@ module Covid19Updates
         start
       end
     end
-
+s
     private
 
     def cnbc_headline
@@ -61,6 +59,8 @@ module Covid19Updates
 
       print Nokogiri::HTML(URI.open((array[pick.to_i - 1][:link]).to_s)).css('div.group').text.gsub('Â', '')
       puts
+
+      
     end
 
     def fox_headline
@@ -93,38 +93,16 @@ module Covid19Updates
       n = final[pick.to_i - 1][:link].to_s
       node = Nokogiri::HTML(URI.open(n)).css('p')
 
-      print node[rand(3..(node.count))].text
+      print node[rand(3..(node.count-4))].text.green
       puts
     end
-
-    # def cnn_headline
-    #   doc = Nokogiri::HTML(URI.open('https://www.cnn.com/world/live-news/coronavirus-pandemic-04-26-20-intl/index.html'))
-    #   items = doc.css('h2.post-headlinestyles__Headline-sc-2ts3cz-1 gzgZOi').text
-
-
-    #   binding.irb
-      
-    #   array = []
-    #   items.each do |item|
-    #     array << { title: item }
-    #   end
-
-    #   array.each_with_index do |news, index|
-    #     puts "#{index.succ}: #{news[:title]}"
-    #   end
-
-    #   puts
-    #     pick = ask('Please pick a number to view an update: ')
-    #   puts 
-
-    # end
 
     def stat_headline
       doc = Nokogiri::HTML(URI.open('https://www.statnews.com/'))
       items = doc.css('span.article-list-title').text
 
       binding.irb
-      
+
       array = []
       items.each do |item|
         array << { title: item.text, link: item.children.attribute('href').value }
@@ -142,12 +120,21 @@ module Covid19Updates
       puts
     end
 
+    def continue
+      message = "Would you like to continue reading updates? (y/n)"
+      prints message 
+
+      user_input = gets.chomp
+      if user_input == y 
+        call
+      else
+        puts "Thank you and be safe out there!"
+      end
+    end
 
 
     def call
       greeting = <<~DOC
-        Welcome to Covid-19 Updates!
-        View the top headlines from the following sites:
 
           1. CNBC
           2. FOX NEWS

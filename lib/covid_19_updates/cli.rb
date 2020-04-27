@@ -130,7 +130,7 @@ module Covid19Updates
       message = "Would you like to continue reading updates? (y/n)"
       print message 
 
-      user_input = gets.chomp
+      user_input = gets.strip
       if user_input == "y"
         call
       else

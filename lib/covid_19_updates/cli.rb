@@ -33,7 +33,7 @@ module Covid19Updates
         puts 'No news source by that number.'
         puts ""
         puts ""
-        start
+        call
       end
     end
 s

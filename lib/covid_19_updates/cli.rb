@@ -60,7 +60,7 @@ module Covid19Updates
       print Nokogiri::HTML(URI.open((array[pick.to_i - 1][:link]).to_s)).css('div.group').text.gsub('Â', '')
       puts
 
-      
+      continue
     end
 
     def fox_headline
@@ -95,6 +95,8 @@ module Covid19Updates
 
       print node[rand(3..(node.count-4))].text.green
       puts
+
+      continue
     end
 
     def stat_headline
@@ -118,6 +120,8 @@ module Covid19Updates
 
       print Nokogiri::HTML(URI.open((array[pick.to_i - 1][:link]).to_s)).css('a.article-list-link').text
       puts
+
+      continue
     end
 
     def continue

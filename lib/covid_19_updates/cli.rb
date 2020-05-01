@@ -174,7 +174,7 @@ module Covid19Updates
           2. FOX NEWS
           3. STAT NEWS
 
-        Enter the number of news website you would like to see updates from.\n Please type list to see options or exit to leave.
+        Enter the number of news website you would like to see updates from.\nPlease type list to see options or exit to leave.
       DOC
       puts greeting.cyan.bold
     end

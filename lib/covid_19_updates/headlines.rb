@@ -57,4 +57,4 @@ class Headlines
 #   items.each do |item|
 #     array << { title: item.text, link: item.attribute('href').value }
 #   end
-# end
+ end

@@ -4,9 +4,10 @@ require 'thor'
 require 'nokogiri'
 require 'open-uri'
 require 'colorize'
+require 'headlines'
 
 module Covid19Updates
-  class CLI < Thor
+  class CLI < Thor 
     def self.exit_on_failure
       true
     end
@@ -40,14 +41,16 @@ module Covid19Updates
     private
 
     def cnbc_headline
-      doc = Nokogiri::HTML(URI.open('https://www.cnbc.com/coronavirus/'))
+      # doc = Nokogiri::HTML(URI.open('https://www.cnbc.com/coronavirus/'))
 
-      items = doc.css('div.Card-titleContainer')
+      # items = doc.css('div.Card-titleContainer')
 
-      array = []
-      items.each do |item|
-        array << { title: item.text, link: item.children.attribute('href').value }
-      end
+      # array = []
+      # items.each do |item|
+      #   array << { title: item.text, link: item.children.attribute('href').value }
+      # end
+
+      array = Headlines.show_headlines
 
       array.each_with_index do |news, index|
         puts "#{index.succ}: #{news[:title]}"
@@ -103,7 +106,6 @@ module Covid19Updates
       doc = Nokogiri::HTML(URI.open('https://www.statnews.com/tag/coronavirus/'))
       items = doc.css('a.post-title-link')
 
-      # binding.irb
 
       array = []
       items.each do |item|

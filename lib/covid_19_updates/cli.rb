@@ -4,7 +4,7 @@ require 'thor'
 require 'nokogiri'
 require 'open-uri'
 require 'colorize'
-require 'headlines'
+require_relative 'headlines'
 
 module Covid19Updates
   class CLI < Thor 
@@ -50,7 +50,7 @@ module Covid19Updates
       #   array << { title: item.text, link: item.children.attribute('href').value }
       # end
 
-      array = Headlines.show_headlines
+      array = Headlines.new(url, css_class).show_headlines
 
       array.each_with_index do |news, index|
         puts "#{index.succ}: #{news[:title]}"

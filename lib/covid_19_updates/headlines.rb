@@ -6,7 +6,7 @@ class Headlines
 
   def initialize(url, css_class)
     #@url = url
-    @css_class = css_class
+    #@css_class = css_class
   end
 
   def show_headlines

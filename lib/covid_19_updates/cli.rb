@@ -41,14 +41,6 @@ module Covid19Updates
     private
 
     def cnbc_headline
-      # doc = Nokogiri::HTML(URI.open('https://www.cnbc.com/coronavirus/'))
-
-      # items = doc.css('div.Card-titleContainer')
-
-      # array = []
-      # items.each do |item|
-      #   array << { title: item.text, link: item.children.attribute('href').value }
-      # end
 
       array = Headlines.new('https://www.cnbc.com/coronavirus/', 'div.Card-titleContainer').show_headlines
 
@@ -103,14 +95,15 @@ module Covid19Updates
     end
 
     def stat_headline
-      doc = Nokogiri::HTML(URI.open('https://www.statnews.com/tag/coronavirus/'))
-      items = doc.css('a.post-title-link')
+      # doc = Nokogiri::HTML(URI.open('https://www.statnews.com/tag/coronavirus/'))
+      # items = doc.css('a.post-title-link')
 
 
-      array = []
-      items.each do |item|
-        array << { title: item.text, link: item.attribute('href').value }
-      end
+      # array = []
+      # items.each do |item|
+      #   array << { title: item.text, link: item.attribute('href').value }
+      # end
+      array = Headlines.new('https://www.statnews.com/tag/coronavirus/', 'a.post-title-link')
 
       array.each_with_index do |news, index|
         puts "#{index.succ}: #{news[:title]}"

@@ -5,7 +5,7 @@ class Headlines
   attr_reader :url, :css_class
 
   def initialize(url, css_class)
-    @url = url
+    #@url = url
     @css_class = css_class
   end
 

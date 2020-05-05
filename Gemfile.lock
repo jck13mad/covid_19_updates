@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    covid_19_updates (0.1.0)
+    covid_19_updates (0.1.1)
       colorize
       nokogiri
       thor (>= 1.0.1)
@@ -39,4 +39,4 @@ DEPENDENCIES
   rspec (~> 3.0)
 
 BUNDLED WITH
-   1.17.2
+   2.1.4

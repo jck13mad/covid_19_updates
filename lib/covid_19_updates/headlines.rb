@@ -13,13 +13,13 @@ class Headlines
     doc = Nokogiri::HTML(URI.open(url)
     items = doc.css(css_class)
 
-    array = []
-    items.each do |item|
-      array << { title: item.text, link: item.children.attribute('href').value }
-    end
+    # array = []
+    # items.each do |item|
+    #   array << { title: item.text, link: item.children.attribute('href').value }
+    # end
 
 
-    array
+    # array
   end
 
 

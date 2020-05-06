@@ -9,34 +9,51 @@ class Headlines
     @css_class = css_class
   end
 
-  def show_cnbc_headlines
-    doc = Nokogiri::HTML(URI.open(url))
-    items = doc.css(css_class)
 
+  def show_headlines
     array = []
     items.each do |item|
-      array << { title: item.text.red, link: item.children.attribute('href').value }
+      if item&.children&.attribute == nil
+        array << { title: item.text.strip.red, link: item.attribute('href').value }
+      else 
+        array << { title: item.text.red, link: item.children.attribute('href').value }
+      end
     end
-
-    # binding.irb
-
-
     array
   end
 
-  def show_stat_headlines
 
-    doc = Nokogiri::HTML(URI.open(url))
-    items = doc.css(css_class)
 
-    array = []
-    items.each do |item|
-      array << { title: item.text.strip.red, link: item.attribute('href').value }
-    end
-    binding.irb
 
-    array 
-  end
+  # def show_cnbc_headlines
+  #   doc = Nokogiri::HTML(URI.open(url))
+  #   items = doc.css(css_class)
+
+  #   array = []
+  #   items.each do |item|
+      
+  #     array << { title: item.text.red, link: item.children.attribute('href').value }
+  #   end
+
+  #   # binding.irb
+
+
+  #   array
+  # end
+
+  # def show_stat_headlines
+
+  #   doc = Nokogiri::HTML(URI.open(url))
+  #   items = doc.css(css_class)
+
+  #   array = []
+  #   items.each do |item|
+  #     array << { title: item.text.strip.red, link: item.attribute('href').value }
+  #   end
+  #   binding.irb
+
+  #   array 
+  # end
 
   def show_fox_headlines
 

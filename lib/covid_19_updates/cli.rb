@@ -96,12 +96,12 @@ module Covid19Updates
 
     def stat_headline
       doc = Nokogiri::HTML(URI.open('https://www.statnews.com/tag/coronavirus/'))
-      items = doc.css('a.topic-block__preview-title').gsub(/\s+/, "")
+      items = doc.css('a.topic-block__preview-title')
 
 
       array = []
       items.each do |item|
-        array << { title: item.text, link: item.attribute('href').value }
+        array << { title: item.text.gsub(/\s+/, ""), link: item.attribute('href').value }
       end
       # array = Headlines.new('https://www.statnews.com/tag/coronavirus/', 'a.post-title-link').show_stat_headlines
 

@@ -27,7 +27,7 @@ class Headlines
 
     if items&.first&.children == nil
       items.each do |item|
-        array << { title: item.text.red, link: item.attribute('href').value }
+        array << { title: item.text.red, link: item.children.attribute('href').value }
       end
     else
       items.each do |item|

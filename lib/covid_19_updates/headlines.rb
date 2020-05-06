@@ -25,7 +25,7 @@ class Headlines
   def show_stat_headlines
 
     doc = Nokogiri::HTML(URI.open(url))
-    items = items = doc.css(css_class)
+    items = doc.css(css_class)
 
     array = []
       items.each do |item|
@@ -38,7 +38,7 @@ class Headlines
 
 
   end
-  
+
 
 
 

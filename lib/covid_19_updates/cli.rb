@@ -75,7 +75,7 @@ module Covid19Updates
       #   item[:link] = item[:link].prepend('https://foxnews.com')
       # end
 
-      array = Headlines.new('https://www.foxnews.com/category/health/infectious-disease/coronavirus', 'header.info-header')
+      array = Headlines.new('https://www.foxnews.com/category/health/infectious-disease/coronavirus', 'header.info-header').show_fox_headlines
 
       final.each_with_index do |news, index|
         puts "#{index.succ}: #{news[:title]}"

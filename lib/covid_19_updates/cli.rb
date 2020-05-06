@@ -59,21 +59,23 @@ module Covid19Updates
     end
 
     def fox_headline
-      doc = Nokogiri::HTML(URI.open('https://www.foxnews.com/category/health/infectious-disease/coronavirus'))
-      items = doc.css('header.info-header')
+      # doc = Nokogiri::HTML(URI.open('https://www.foxnews.com/category/health/infectious-disease/coronavirus'))
+      # items = doc.css('header.info-header')
 
-      array = []
-      items.each do |item|
-        if item.at_css('h4.title a')&.text != nil
-          array << { title: item.at_css('h4.title a')&.text, link: item.at_css('h4.title a')&.attribute('href')&.value }
-        end
-      end
+      # array = []
+      # items.each do |item|
+      #   if item.at_css('h4.title a')&.text != nil
+      #     array << { title: item.at_css('h4.title a')&.text, link: item.at_css('h4.title a')&.attribute('href')&.value }
+      #   end
+      # end
 
-      final = array.map! do |item|
-        item unless item[:link].start_with?('https')
-      end.compact.each do |item|
-        item[:link] = item[:link].prepend('https://foxnews.com')
-      end
+      # final = array.map! do |item|
+      #   item unless item[:link].start_with?('https')
+      # end.compact.each do |item|
+      #   item[:link] = item[:link].prepend('https://foxnews.com')
+      # end
+
+      array = Headlines.new('https://www.foxnews.com/category/health/infectious-disease/coronavirus', 'header.info-header')
 
       final.each_with_index do |news, index|
         puts "#{index.succ}: #{news[:title]}"

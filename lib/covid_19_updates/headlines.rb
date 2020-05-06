@@ -36,6 +36,23 @@ class Headlines
 
   def show_fox_headlines
 
+    doc = Nokogiri::HTML(URI.open(url))
+    items = doc.css(css_class)
+
+    array = []
+    items.each do |item|
+      if item.at_css('h4.title a')&.text != nil
+        array << { title: item.at_css('h4.title a')&.text, link: item.at_css('h4.title a')&.attribute('href')&.value }
+      end
+    end
+
+    final = array.map! do |item|
+      item unless item[:link].start_with?('https')
+    end.compact.each do |item|
+      item[:link] = item[:link].prepend('https://foxnews.com')
+    end
+
+    final
 
   end
 

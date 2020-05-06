@@ -18,6 +18,8 @@ class Headlines
       array << { title: item.text.red, link: item.children.attribute('href').value }
     end
 
+    binding.irb
+
 
     array
   end

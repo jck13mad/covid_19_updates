@@ -11,6 +11,9 @@ class Headlines
 
 
   def show_headlines
+    doc = Nokogiri::HTML(URI.open(url))
+    items = doc.css(css_class)
+
     array = []
     items.each do |item|
       if item&.children&.attribute == nil

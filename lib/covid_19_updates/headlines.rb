@@ -28,10 +28,10 @@ class Headlines
     items = doc.css(css_class)
 
     array = []
-      items.each do |item|
-        array << { title: item.text.strip.red, link: item.attribute('href').value }
-      end
-
+    items.each do |item|
+      array << { title: item.text.strip.red, link: item.attribute('href').value }
+    end
+    array 
   end
 
   def show_fox_headlines

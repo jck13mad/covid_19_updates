@@ -42,6 +42,8 @@ module Covid19Updates
 
     def cnbc_headline
 
+      binding.irb
+
       array = Headlines.new('https://www.cnbc.com/coronavirus/', 'div.Card-titleContainer').show_headlines
 
       array.each_with_index do |news, index|

@@ -101,7 +101,7 @@ module Covid19Updates
 
       array = []
       items.each do |item|
-        array << { title: item.text.gsub(/\s+/, ""), link: item.attribute('href').value }
+        array << { title: item.text, link: item.attribute('href').value }
       end
       # array = Headlines.new('https://www.statnews.com/tag/coronavirus/', 'a.post-title-link').show_stat_headlines
 

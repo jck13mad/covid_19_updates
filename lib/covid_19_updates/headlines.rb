@@ -18,7 +18,7 @@ class Headlines
       array << { title: item.text.red, link: item.children.attribute('href').value }
     end
 
-    binding.irb
+    # binding.irb
 
 
     array
@@ -33,6 +33,8 @@ class Headlines
     items.each do |item|
       array << { title: item.text.strip.red, link: item.attribute('href').value }
     end
+    binding.irb
+
     array 
   end
 

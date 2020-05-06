@@ -19,23 +19,23 @@ class Headlines
 
 
     array = []
-    # items.each do |item|
-    #   if item&.children&.attribute == nil
-    #     array << { title: item.text.strip.red, link: item.attribute('href').value }
-    #   else 
-    #     array << { title: item.text.red, link: item.children.attribute('href').value }
-    #   end
-    # end
-
-    if items&.first&.children == nil
-      items.each do |item|
+    items.each do |item|
+      if item&.children == nil
+        array << { title: item.text.strip.red, link: item.attribute('href').value }
+      else 
         array << { title: item.text.red, link: item.children.attribute('href').value }
       end
-    else
-      items.each do |item|
-        array << { title: item.text.red, link: item.attribute('href').value }
-      end
     end
+
+    # if items&.first&.children == nil
+    #   items.each do |item|
+    #     array << { title: item.text.red, link: item.children.attribute('href').value }
+    #   end
+    # else
+    #   items.each do |item|
+    #     array << { title: item.text.red, link: item.attribute('href').value }
+    #   end
+    # end
 
     array
   end
@@ -43,57 +43,52 @@ class Headlines
 
 
 
-  # def show_cnbc_headlines
-  #   doc = Nokogiri::HTML(URI.open(url))
-  #   items = doc.css(css_class)
+  def show_cnbc_headlines
+    doc = Nokogiri::HTML(URI.open(url))
+    items = doc.css(css_class)
 
-  #   array = []
-  #   items.each do |item|
-      
-  #     array << { title: item.text.red, link: item.children.attribute('href').value }
-  #   end
+    array = []
+    items.each do |item|
+      array << { title: item.text.red, link: item.children.attribute('href').value }
+    end
 
-  #   # binding.irb
+    array
+  end
 
-
-  #   array
-  # end
-
-  # def show_stat_headlines
-
-  #   doc = Nokogiri::HTML(URI.open(url))
-  #   items = doc.css(css_class)
-
-  #   array = []
-  #   items.each do |item|
-  #     array << { title: item.text.strip.red, link: item.attribute('href').value }
-  #   end
-  #   binding.irb
-
-  #   array 
-  # end
-
-  def show_fox_headlines
+  def show_stat_headlines
 
     doc = Nokogiri::HTML(URI.open(url))
     items = doc.css(css_class)
 
     array = []
     items.each do |item|
-      if item.at_css('h4.title a')&.text != nil
-        array << { title: item.at_css('h4.title a')&.text, link: item.at_css('h4.title a')&.attribute('href')&.value }
-      end
+      array << { title: item.text.strip.red, link: item.attribute('href').value }
     end
 
-    final = array.map! do |item|
-      item unless item[:link].start_with?('https')
-    end.compact.each do |item|
-      item[:link] = item[:link].prepend('https://foxnews.com')
-    end
-
-    array
-
+    array 
   end
+
+  # def show_fox_headlines
+
+  #   doc = Nokogiri::HTML(URI.open(url))
+  #   items = doc.css(css_class)
+
+  #   array = []
+  #   items.each do |item|
+  #     if item.at_css('h4.title a')&.text != nil
+  #       array << { title: item.at_css('h4.title a')&.text, link: item.at_css('h4.title a')&.attribute('href')&.value }
+  #     end
+  #   end
+
+  #   final = array.map! do |item|
+  #     item unless item[:link].start_with?('https')
+  #   end.compact.each do |item|
+  #     item[:link] = item[:link].prepend('https://foxnews.com')
+  #   end
+
+  #   array
+
+  # end
 
 
 

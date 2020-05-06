@@ -15,7 +15,7 @@ class Headlines
 
     array = []
     items.each do |item|
-      array << { title: item.text, link: item.children.attribute('href').value }
+      array << { title: item.text.red, link: item.children.attribute('href').value }
     end
 
 
@@ -29,10 +29,16 @@ class Headlines
 
     array = []
       items.each do |item|
-        array << { title: item.text, link: item.attribute('href').value }
+        array << { title: item.text.strip.red, link: item.attribute('href').value }
       end
 
   end
+
+  def show_fox_headlines
+
+
+  end
+  
 
 
 

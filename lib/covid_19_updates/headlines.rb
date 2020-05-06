@@ -10,7 +10,7 @@ class Headlines
   end
 
 
-  def show_headlines
+  def show_headlines(url, css_class)
     doc = Nokogiri::HTML(URI.open(url))
     items = doc.css(css_class)
 

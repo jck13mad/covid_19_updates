@@ -9,7 +9,7 @@ class Headlines
     @css_class = css_class
   end
 
-  def show_headlines
+  def show_cnbc_headlines
     doc = Nokogiri::HTML(URI.open(url))
     items = doc.css(css_class)
 
@@ -21,6 +21,19 @@ class Headlines
 
     array
   end
+
+  def show_stat_headlines
+
+    doc = Nokogiri::HTML(URI.open(url))
+    items = items = doc.css(css_class)
+
+    array = []
+      items.each do |item|
+        array << { title: item.text, link: item.attribute('href').value }
+      end
+
+  end
+
 
 
 

@@ -42,7 +42,7 @@ module Covid19Updates
 
     def cnbc_headline
 
-      array = Headlines.new('https://www.cnbc.com/coronavirus/', 'div.Card-titleContainer').show_headlines
+      array = Headlines.new('https://www.cnbc.com/coronavirus/', 'div.Card-titleContainer').show_cnbc_headlines
 
       array.each_with_index do |news, index|
         puts "#{index.succ}: #{news[:title]}"
@@ -103,7 +103,7 @@ module Covid19Updates
       # items.each do |item|
       #   array << { title: item.text, link: item.attribute('href').value }
       # end
-      array = Headlines.new('https://www.statnews.com/tag/coronavirus/', 'a.post-title-link').show_headlines
+      array = Headlines.new('https://www.statnews.com/tag/coronavirus/', 'a.post-title-link').show_stat_headlines
 
       array.each_with_index do |news, index|
         puts "#{index.succ}: #{news[:title]}"

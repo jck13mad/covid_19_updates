@@ -14,7 +14,7 @@ class Headlines
     doc = Nokogiri::HTML(URI.open(url))
     items = doc.css(css_class)
 
-    binding.pry
+    binding.irb
 
 
 

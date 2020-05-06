@@ -10,18 +10,29 @@ class Headlines
   end
 
 
-  def show_headlines(url, css_class)
+  def show_headlines
     doc = Nokogiri::HTML(URI.open(url))
     items = doc.css(css_class)
 
     array = []
-    items.each do |item|
-      if item&.children&.attribute == nil
-        array << { title: item.text.strip.red, link: item.attribute('href').value }
-      else 
+    # items.each do |item|
+    #   if item&.children&.attribute == nil
+    #     array << { title: item.text.strip.red, link: item.attribute('href').value }
+    #   else 
+    #     array << { title: item.text.red, link: item.children.attribute('href').value }
+    #   end
+    # end
+
+    if items.first&.children&.attribute == nil
+      items.each do |item|
+        array << { title: item.text.red, link: item.attribute('href').value }
+      end
+    else
+      items.each do |item|
         array << { title: item.text.red, link: item.children.attribute('href').value }
       end
     end
+
     array
   end
 

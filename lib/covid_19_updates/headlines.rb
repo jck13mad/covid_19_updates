@@ -14,7 +14,7 @@ class Headlines
     doc = Nokogiri::HTML(URI.open(url))
     items = doc.css(css_class)
 
-    binding.irb
+
 
     array = []
     # items.each do |item|
@@ -25,7 +25,7 @@ class Headlines
     #   end
     # end
 
-    if items.first&.children&.attribute == nil
+    if items&.first&.children == nil
       items.each do |item|
         array << { title: item.text.red, link: item.attribute('href').value }
       end

@@ -75,7 +75,7 @@ module Covid19Updates
       #   item[:link] = item[:link].prepend('https://foxnews.com')
       # end
 
-      array = Headlines.new('https://www.foxnews.com/category/health/infectious-disease/coronavirus', 'header.info-header').show_fox_headlines
+      final = Headlines.new('https://www.foxnews.com/category/health/infectious-disease/coronavirus', 'header.info-header').show_fox_headlines
 
       final.each_with_index do |news, index|
         puts "#{index.succ}: #{news[:title]}"
@@ -84,7 +84,6 @@ module Covid19Updates
       puts
         pick = ask('Please pick a number to view an update: ')
       puts
-
 
       # n.css('p')[rand(3..(n.css('p').count))].text (n.css('p').count)
       n = final[pick.to_i - 1][:link].to_s

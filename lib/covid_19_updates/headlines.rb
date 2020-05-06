@@ -52,7 +52,7 @@ class Headlines
       item[:link] = item[:link].prepend('https://foxnews.com')
     end
 
-    final
+    array
 
   end
 

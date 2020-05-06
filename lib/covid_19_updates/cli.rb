@@ -42,7 +42,7 @@ module Covid19Updates
 
     def cnbc_headline
 
-      binding.irb
+      #binding.irb
 
       array = Headlines.new('https://www.cnbc.com/coronavirus/', 'div.Card-titleContainer').show_headlines
 

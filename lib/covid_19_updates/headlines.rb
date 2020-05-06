@@ -14,8 +14,6 @@ class Headlines
     doc = Nokogiri::HTML(URI.open(url))
     items = doc.css(css_class)
 
-    binding.irb
-
 
 
     array = []
@@ -33,7 +31,7 @@ class Headlines
       end
     else
       items.each do |item|
-        array << { title: item.text.red, link: item.children.attribute('href').value }
+        array << { title: item.text.red, link: item.attribute('href').value }
       end
     end
 

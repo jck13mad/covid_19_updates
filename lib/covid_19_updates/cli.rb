@@ -106,7 +106,7 @@ module Covid19Updates
       # items.each do |item|
       #   array << { title: item.text.strip.red, link: item.attribute('href').value }
       # end
-      array = Headlines.new('https://www.statnews.com/tag/coronavirus/', 'span.topic-block__preview-title topic-block__preview-title--small').show_headlines
+      array = Headlines.new('https://www.statnews.com/tag/coronavirus/', 'span.Card-titleContainer').show_headlines
 
       array.each_with_index do |news, index|
         puts "#{index.succ}: #{news[:title]}"

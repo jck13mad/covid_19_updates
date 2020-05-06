@@ -20,10 +20,10 @@ class Headlines
 
     array = []
     items.each do |item|
-      if item&.parent.first == 'a'
+      if item&.children == nil
         array << { title: item.text.strip.red, link: item.attribute('href').value }
       else 
-        array << { title: item.text.strip.red, link: item.parent.first.attribute('href').value }
+        array << { title: item.text.strip.red, link: item.children.attribute('href').value }
       end
     end
 

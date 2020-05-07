@@ -132,10 +132,6 @@ module Covid19Updates
     def pick
       puts
       @pick = ask('Please pick a number to view an update: ')
-      if @pick > show_headlines.array.count-1 || @pick < show_headlines.array.count-1
-        puts "Sorry, that is not a valid entry."
-        @pick = ask('Please pick a number to view an update: ')
-      end
       puts
     end
 

@@ -48,7 +48,7 @@ module Covid19Updates
       end
 
       final.each_with_index do |news, index|
-        puts "#{index.succ}: #{news[:title]}"
+        puts "#{index.succ}: #{news[:title]}".red
       end
 
       pick
@@ -56,7 +56,7 @@ module Covid19Updates
       n = final[@pick.to_i - 1][:link].to_s
       node = Nokogiri::HTML(URI.open(n)).css('p')
 
-      print node[rand(3..(node.count - 4))].text.light_blue
+      print node[rand(3..(node.count - 2))].text.light_blue
       puts
 
       continue

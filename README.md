@@ -21,7 +21,7 @@ Or install it yourself as:
     $ gem install covid_19_updates
 
 ## Usage
-When gem has been downloaded, run 'cov list' to start program. All other instructions will be placed on screen for user to respond to. Thank you and be safe out there!
+When gem has been downloaded, run 'cov start' to start program. All other instructions will be placed on screen for user to respond to. Thank you and be safe out there!
 
 
 ## Development

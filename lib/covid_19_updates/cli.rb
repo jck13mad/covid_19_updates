@@ -33,6 +33,8 @@ module Covid19Updates
 
       pick
 
+      number_catch
+
       Scraper.fetch(array, @pick, 'cnbc')
 
       continue
@@ -52,6 +54,8 @@ module Covid19Updates
       end
 
       pick
+      
+      number_catch
 
       n = final[@pick.to_i - 1][:link].to_s
       node = Nokogiri::HTML(URI.open(n)).css('p')
@@ -69,13 +73,7 @@ module Covid19Updates
 
       pick
 
-      if @pick.to_i > array.count-1 || @pick.to_i < array.count-1
-        puts 
-        puts "Sorry, there is no story associated with this number."
-        puts
-        pick
-      end
-      
+      number_catch
 
       Scraper.fetch(array, @pick, 'stat')
 
@@ -148,5 +146,16 @@ module Covid19Updates
         puts "#{index.succ}: #{news[:title]}"
       end
     end
+
+    def number_catch
+      if @pick.to_i > array.count-1 || @pick.to_i < array.count-1
+        puts 
+        puts "Sorry, there is no story associated with this number."
+        puts
+        pick
+      end
+    end
+
   end
+
 end

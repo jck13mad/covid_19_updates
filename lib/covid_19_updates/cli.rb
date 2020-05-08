@@ -35,7 +35,7 @@ module Covid19Updates
 
       if @pick.to_i > array.count-1 || @pick.to_i < array.count-1
         puts 
-        puts "Sorry, there is no story associated with this number."
+        puts "Sorry, there is no story associated with this number.".light_green
         puts
         pick
       end
@@ -62,7 +62,7 @@ module Covid19Updates
       
       if @pick.to_i > array.count-1 || @pick.to_i < array.count-1
         puts 
-        puts "Sorry, there is no story associated with this number."
+        puts "Sorry, there is no story associated with this number.".light_green
         puts
         pick
       end
@@ -85,7 +85,7 @@ module Covid19Updates
 
       if @pick.to_i > array.count-1 || @pick.to_i < array.count-1
         puts 
-        puts "Sorry, there is no story associated with this number."
+        puts "Sorry, there is no story associated with this number.".light_green
         puts
         pick
       end

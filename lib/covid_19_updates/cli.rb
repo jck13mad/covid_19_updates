@@ -60,7 +60,7 @@ module Covid19Updates
 
       pick
       
-      if @pick.to_i > array.size
+      if @pick.to_i > final.size
         puts 
         puts "Sorry, there is no story associated with this number.".light_green
         puts

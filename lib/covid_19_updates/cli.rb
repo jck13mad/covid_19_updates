@@ -83,7 +83,7 @@ module Covid19Updates
 
       pick
 
-      if @pick.to_i > array.count-1 || @pick.to_i < array.count-1
+      if @pick.to_i > array.size
         puts 
         puts "Sorry, there is no story associated with this number.".light_green
         puts
